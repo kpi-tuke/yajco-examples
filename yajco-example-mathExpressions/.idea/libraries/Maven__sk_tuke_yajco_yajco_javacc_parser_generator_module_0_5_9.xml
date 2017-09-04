@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: sk.tuke.yajco:yajco-javacc-parser-generator-module:0.5.9">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/sk/tuke/yajco/yajco-javacc-parser-generator-module/0.5.9/yajco-javacc-parser-generator-module-0.5.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/sk/tuke/yajco/yajco-javacc-parser-generator-module/0.5.9/yajco-javacc-parser-generator-module-0.5.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/sk/tuke/yajco/yajco-javacc-parser-generator-module/0.5.9/yajco-javacc-parser-generator-module-0.5.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
