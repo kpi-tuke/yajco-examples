@@ -25,6 +25,12 @@
             <artifactId>yajco-annotation-processor</artifactId>
             <version>0.5.9</version>
         </dependency>
-    </dependencies>
 
+        <!-- added for integration testing-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
 </project>
