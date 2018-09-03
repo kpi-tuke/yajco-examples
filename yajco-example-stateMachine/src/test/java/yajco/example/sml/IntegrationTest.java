@@ -66,8 +66,8 @@ public class IntegrationTest {
 		parseStateMachine(input);
 		Assert.assertEquals("state Idle [outgoingTrans: coinInsert ; incomingTrans: cupRemoved coinReturn returnCoins resetButton ];\n" +
 						"state InsertingCoins [outgoingTrans: rightAmountEntered coinReturn ; incomingTrans: coinInsert ];\n" +
-						"state UserChoose [outgoingTrans: returnCoins buttonPushed ; incomingTrans: rightAmountEntered ];\n" +
-						"state MakeCoffee [outgoingTrans: cupRemoved error ; incomingTrans: buttonPushed ];\n" +
+						"state UserChoose [outgoingTrans: buttonPushed returnCoins ; incomingTrans: rightAmountEntered ];\n" +
+						"state MakeCoffee [outgoingTrans: error cupRemoved ; incomingTrans: buttonPushed ];\n" +
 						"state ServiceNeeded [outgoingTrans: resetButton ; incomingTrans: error ];\n" +
 						"trans coinInsert:Idle->InsertingCoins;\n" +
 						"trans coinReturn:InsertingCoins->Idle;\n" +
