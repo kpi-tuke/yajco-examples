@@ -54,29 +54,29 @@ public class IntegrationTest {
 				"state MakeCoffee;\n" +
 				"state ServiceNeeded;\n" +
 				"\n" +
-				"trans coinInsert : Idle -> InsertingCoins;\n" +
-				"trans coinReturn : InsertingCoins -> Idle;\n" +
-				"trans rightAmountEntered : InsertingCoins -> UserChoose;\n" +
-				"trans returnCoins : UserChoose -> Idle;\n" +
-				"trans buttonPushed : UserChoose -> MakeCoffee;\n" +
-				"trans cupRemoved : MakeCoffee -> Idle;\n" +
-				"trans error : MakeCoffee -> ServiceNeeded;\n" +
-				"trans resetButton : ServiceNeeded -> Idle;\n";
+				"trans a : Idle -> InsertingCoins;\n" +
+				"trans b : InsertingCoins -> Idle;\n" +
+				"trans c : InsertingCoins -> UserChoose;\n" +
+				"trans d : UserChoose -> Idle;\n" +
+				"trans e : UserChoose -> MakeCoffee;\n" +
+				"trans f : MakeCoffee -> Idle;\n" +
+				"trans g : MakeCoffee -> ServiceNeeded;\n" +
+				"trans h : ServiceNeeded -> Idle;\n";
 
 		parseStateMachine(input);
-		Assert.assertEquals("state Idle [outgoingTrans: coinInsert ; incomingTrans: cupRemoved coinReturn returnCoins resetButton ];\n" +
-						"state InsertingCoins [outgoingTrans: rightAmountEntered coinReturn ; incomingTrans: coinInsert ];\n" +
-						"state UserChoose [outgoingTrans: buttonPushed returnCoins ; incomingTrans: rightAmountEntered ];\n" +
-						"state MakeCoffee [outgoingTrans: error cupRemoved ; incomingTrans: buttonPushed ];\n" +
-						"state ServiceNeeded [outgoingTrans: resetButton ; incomingTrans: error ];\n" +
-						"trans coinInsert:Idle->InsertingCoins;\n" +
-						"trans coinReturn:InsertingCoins->Idle;\n" +
-						"trans rightAmountEntered:InsertingCoins->UserChoose;\n" +
-						"trans returnCoins:UserChoose->Idle;\n" +
-						"trans buttonPushed:UserChoose->MakeCoffee;\n" +
-						"trans cupRemoved:MakeCoffee->Idle;\n" +
-						"trans error:MakeCoffee->ServiceNeeded;\n" +
-						"trans resetButton:ServiceNeeded->Idle;" +
+		Assert.assertEquals("state Idle [outgoingTrans: a ; incomingTrans: b h f d ];\n" +
+						"state InsertingCoins [outgoingTrans: b c ; incomingTrans: a ];\n" +
+						"state UserChoose [outgoingTrans: e d ; incomingTrans: c ];\n" +
+						"state MakeCoffee [outgoingTrans: f g ; incomingTrans: e ];\n" +
+						"state ServiceNeeded [outgoingTrans: h ; incomingTrans: g ];\n" +
+						"trans a:Idle->InsertingCoins;\n" +
+						"trans b:InsertingCoins->Idle;\n" +
+						"trans c:InsertingCoins->UserChoose;\n" +
+						"trans d:UserChoose->Idle;\n" +
+						"trans e:UserChoose->MakeCoffee;\n" +
+						"trans f:MakeCoffee->Idle;\n" +
+						"trans g:MakeCoffee->ServiceNeeded;\n" +
+						"trans h:ServiceNeeded->Idle;\n" +
 						"\n",
 				outContent.toString());
 	}
