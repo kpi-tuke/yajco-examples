@@ -37,7 +37,7 @@ public class IntegrationTest {
 
 		parseStateMachine(input);
 		Assert.assertEquals("state Ready [outgoingTrans: a ; incomingTrans: b ];\n" +
-						"state Running [outgoingTrans: b c ; incomingTrans: a d ];\n" +
+						"state Running [outgoingTrans: c b ; incomingTrans: a d ];\n" +
 						"state Unsafe [outgoingTrans: d ; incomingTrans: c ];\n" +
 						"trans a:Ready->Running;\n" +
 						"trans b:Running->Ready;\n" +
