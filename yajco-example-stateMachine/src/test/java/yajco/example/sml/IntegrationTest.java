@@ -51,32 +51,26 @@ public class IntegrationTest {
 		String input = "state Idle;\n" +
 				"state InsertingCoins;\n" +
 				"state UserChoose;\n" +
+				"state ReturningRemnant;\n" +
 				"state MakeCoffee;\n" +
-				"state ServiceNeeded;\n" +
 				"\n" +
 				"trans a : Idle -> InsertingCoins;\n" +
-				"trans b : InsertingCoins -> Idle;\n" +
-				"trans c : InsertingCoins -> UserChoose;\n" +
-				"trans d : UserChoose -> Idle;\n" +
-				"trans e : UserChoose -> MakeCoffee;\n" +
-				"trans f : MakeCoffee -> Idle;\n" +
-				"trans g : MakeCoffee -> ServiceNeeded;\n" +
-				"trans h : ServiceNeeded -> Idle;\n";
+				"trans b : InsertingCoins -> UserChoose;\n" +
+				"trans c : UserChoose -> ReturningRemnant;\n" +
+				"trans d : ReturningRemnant -> MakeCoffee;\n" +
+				"trans e : MakeCoffee -> Idle;\n";
 
 		parseStateMachine(input);
-		Assert.assertEquals("state Idle [outgoingTrans: a ; incomingTrans: b h f d ];\n" +
-						"state InsertingCoins [outgoingTrans: b c ; incomingTrans: a ];\n" +
-						"state UserChoose [outgoingTrans: e d ; incomingTrans: c ];\n" +
-						"state MakeCoffee [outgoingTrans: f g ; incomingTrans: e ];\n" +
-						"state ServiceNeeded [outgoingTrans: h ; incomingTrans: g ];\n" +
+		Assert.assertEquals("state Idle [outgoingTrans: a ; incomingTrans: e ];\n" +
+						"state InsertingCoins [outgoingTrans: b ; incomingTrans: a ];\n" +
+						"state UserChoose [outgoingTrans: c ; incomingTrans: b ];\n" +
+						"state ReturningRemnant [outgoingTrans: d ; incomingTrans: c ];\n" +
+						"state MakeCoffee [outgoingTrans: e ; incomingTrans: d ];\n" +
 						"trans a:Idle->InsertingCoins;\n" +
-						"trans b:InsertingCoins->Idle;\n" +
-						"trans c:InsertingCoins->UserChoose;\n" +
-						"trans d:UserChoose->Idle;\n" +
-						"trans e:UserChoose->MakeCoffee;\n" +
-						"trans f:MakeCoffee->Idle;\n" +
-						"trans g:MakeCoffee->ServiceNeeded;\n" +
-						"trans h:ServiceNeeded->Idle;\n" +
+						"trans b:InsertingCoins->UserChoose;\n" +
+						"trans c:UserChoose->ReturningRemnant;\n" +
+						"trans d:ReturningRemnant->MakeCoffee;\n" +
+						"trans e:MakeCoffee->Idle;\n" +
 						"\n",
 				outContent.toString());
 	}
