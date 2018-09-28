@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sk.tuke.yajco.example</groupId>
+    <artifactId>examples</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>All YAJCo examples</name>
+
+    <modules>
+        <module>yajco-example-gettingStarted</module>
+        <module>yajco-example-simpleRobot</module>
+        <module>yajco-example-robotKarel</module>
+        <module>yajco-example-mathExpressions</module>
+        <module>yajco-example-extMathExpressions</module>
+        <module>yajco-example-stateMachine</module>
+        <module>yajco-example-deskNielsen</module>
+        <module>yajco-example-json</module>
+        <module>yajco-example-imperativeLang</module>
+    </modules>
+</project>
