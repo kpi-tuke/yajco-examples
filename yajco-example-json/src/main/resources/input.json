@@ -1,0 +1,11 @@
+{
+  "id": 444,
+  "gender": "male",
+  "name": "John Bell",
+  "active": true,
+  "age": 34.5,
+  "hobbies": [
+    "skiing",
+    "sleeping"
+  ]
+}
