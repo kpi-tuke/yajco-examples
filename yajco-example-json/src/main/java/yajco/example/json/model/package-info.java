@@ -1,16 +1,9 @@
 @Parser(className = "yajco.example.json.parser.JsonParser",
-mainNode = "JsonFile",
+mainNode = "JsonValue",
 tokens = {
-    @TokenDef(name = "KONOBJ", regexp = "[}]"),
-    @TokenDef(name = "ZACOBJ", regexp = "[{]"),
-//    @TokenDef(name = "STRING", regexp = "\"([a-zA-Z_][a-zA-Z]*)\""),
-    @TokenDef(name = "VALUE", regexp = "\"([^\"]*)\""),
-    @TokenDef(name = "CISLO", regexp = "([0-9]*)"),
+    @TokenDef(name = "STRING", regexp = "\"([^\"]*)\""),
+    @TokenDef(name = "NUMBER", regexp = "([0-9]+(\\.[0-9]+)?([eE][+-][0-9]+)?)"),
     @TokenDef(name = "BOOLEAN", regexp = "(true)|(false)"),
-    @TokenDef(name = "NULL", regexp = "null"),
-    @TokenDef(name = "KONPOLE", regexp = "\\]"),
-    @TokenDef(name = "ZACPOLE", regexp = "\\["),
-    @TokenDef(name = "DVOJBODKA", regexp = ":")
 },
 skips = {
     @Skip(" "),
