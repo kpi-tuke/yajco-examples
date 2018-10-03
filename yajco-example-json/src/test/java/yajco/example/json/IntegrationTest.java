@@ -4,10 +4,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import yajco.example.json.model.JsonValue;
 import yajco.example.json.parser.JsonParser;
+import yajco.example.json.parser.ParseException;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 
 public class IntegrationTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -24,125 +25,47 @@ public class IntegrationTest {
 
 	@Test
 	public void simpleObjectTest() throws Exception {
-		String input = "{\n" +
-				"\"id\": 444,\n" +
-				"\"gender\": \"male\",\n" +
-				"\"name\": \"John Bell\",\n" +
-				"\"active\": true,\n" +
-				"\"age\": 345,\n" +
-				"\"hobbies\": [\"skiing\",\"sleeping\"]\n" +
-				"}\n";
-		parse(input);
-
-		Assert.assertEquals("Cislo: 444\n" +
-						"String: id\n" +
-						"Hodnota retazca/value: male\n" +
-						"String: gender\n" +
-						"Hodnota retazca/value: John Bell\n" +
-						"String: name\n" +
-						"Booleanovska hodnota: true\n" +
-						"String: active\n" +
-						"Cislo: 345\n" +
-						"String: age\n" +
-						"Hodnota retazca/value: skiing\n" +
-						"Hodnota retazca/value: sleeping\n" +
-						"Zaciatok pola\n" +
-						"Koniec pola\n" +
-						"String: hobbies\n" +
-						"Zaciatok objektu\n" +
-						"Koniec objektu\n",
-				outContent.toString());
+		String input = "/simple_input.json";
+		Assert.assertEquals(getJsonObject(input).toString(), "{\"id\": 444, " +
+				"\"gender\": \"male\", " +
+				"\"name\": \"John Bell\", " +
+				"\"active\": true, " +
+				"\"age\": 34.5, " +
+				"\"hobbies\": [\"skiing\", \"sleeping\"]" +
+				"}");
 	}
 
 	@Test
 	public void complexObjectTest() throws Exception {
-		String input = "{\n" +
-				"\"id\": 444,\n" +
-				"\"gender\": \"male\",\n" +
-				"\"name\": \"John Bell\",\n" +
-				"\"active\": true,\n" +
-				"\"age\": 345,\n" +
-				"\"hobbies\": [\"skiing\",\"sleeping\"],\n" +
-				"\"children\": [\n" +
-				"{\n" +
-				"\"id\": 445,\n" +
-				"\"gender\": \"male\",\n" +
-				"\"name\": \"Peter Bell\",\n" +
-				"\"active\": true,\n" +
-				"\"age\": 15,\n" +
-				"\"hobbies\": [\"skiing\",\"reading\"]\n" +
-				"},\n" +
-				"{\n" +
-				"\"id\": 446,\n" +
-				"\"gender\": \"female\",\n" +
-				"\"name\": \"Anna Bell\",\n" +
-				"\"active\": false,\n" +
-				"\"age\": 17,\n" +
-				"\"hobbies\": [\"music\",\"dancing\"]\n" +
-				"}\n" +
-				"]\n" +
-				"}\n";
-		parse(input);
-
-		Assert.assertEquals("Cislo: 444\n" +
-						"String: id\n" +
-						"Hodnota retazca/value: male\n" +
-						"String: gender\n" +
-						"Hodnota retazca/value: John Bell\n" +
-						"String: name\n" +
-						"Booleanovska hodnota: true\n" +
-						"String: active\n" +
-						"Cislo: 345\n" +
-						"String: age\n" +
-						"Hodnota retazca/value: skiing\n" +
-						"Hodnota retazca/value: sleeping\n" +
-						"Zaciatok pola\n" +
-						"Koniec pola\n" +
-						"String: hobbies\n" +
-						"Cislo: 445\n" +
-						"String: id\n" +
-						"Hodnota retazca/value: male\n" +
-						"String: gender\n" +
-						"Hodnota retazca/value: Peter Bell\n" +
-						"String: name\n" +
-						"Booleanovska hodnota: true\n" +
-						"String: active\n" +
-						"Cislo: 15\n" +
-						"String: age\n" +
-						"Hodnota retazca/value: skiing\n" +
-						"Hodnota retazca/value: reading\n" +
-						"Zaciatok pola\n" +
-						"Koniec pola\n" +
-						"String: hobbies\n" +
-						"Zaciatok objektu\n" +
-						"Koniec objektu\n" +
-						"Cislo: 446\n" +
-						"String: id\n" +
-						"Hodnota retazca/value: female\n" +
-						"String: gender\n" +
-						"Hodnota retazca/value: Anna Bell\n" +
-						"String: name\n" +
-						"Booleanovska hodnota: false\n" +
-						"String: active\n" +
-						"Cislo: 17\n" +
-						"String: age\n" +
-						"Hodnota retazca/value: music\n" +
-						"Hodnota retazca/value: dancing\n" +
-						"Zaciatok pola\n" +
-						"Koniec pola\n" +
-						"String: hobbies\n" +
-						"Zaciatok objektu\n" +
-						"Koniec objektu\n" +
-						"Zaciatok pola\n" +
-						"Koniec pola\n" +
-						"String: children\n" +
-						"Zaciatok objektu\n" +
-						"Koniec objektu\n",
-				outContent.toString());
+		String input = "/complex_input.json";
+		Assert.assertEquals(getJsonObject(input).toString(), "{\"id\": 444, " +
+				"\"gender\": \"male\", " +
+				"\"name\": \"John Bell\", " +
+				"\"active\": true, " +
+				"\"age\": 345, " +
+				"\"hobbies\": [\"skiing\", \"sleeping\"], " +
+				"\"children\": [{" +
+				"\"id\": 445, " +
+				"\"gender\": \"male\", " +
+				"\"name\": \"Peter Bell\", " +
+				"\"active\": true, " +
+				"\"age\": 15, " +
+				"\"hobbies\": [\"skiing\", \"reading\"]" +
+				"}, " +
+				"{" +
+				"\"id\": 446, " +
+				"\"gender\": \"female\", " +
+				"\"name\": \"Anna Bell\", " +
+				"\"active\": false, " +
+				"\"age\": 17, " +
+				"\"hobbies\": [\"music\", \"dancing\"]" +
+				"}" +
+				"]" +
+				"}");
 	}
 
-	private void parse(String input) throws Exception {
-		JsonParser parser = new JsonParser();
-		parser.parse(input);
+	private JsonValue getJsonObject(String input) throws ParseException {
+		InputStream stream = Main.class.getResourceAsStream(input);
+		return new JsonReader().parse(stream);
 	}
 }
