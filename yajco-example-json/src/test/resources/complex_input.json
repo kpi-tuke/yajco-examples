@@ -3,7 +3,7 @@
   "gender": "male",
   "name": "John Bell",
   "active": true,
-  "age": 345,
+  "age": 34.5,
   "hobbies": [
     "skiing",
     "sleeping"
