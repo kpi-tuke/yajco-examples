@@ -6,12 +6,10 @@ import yajco.annotation.Before;
 import yajco.annotation.Token;
 import yajco.annotation.reference.References;
 
-public class Transition extends Declaration {
+public class Transition {
 
     private String label;
-
     private State source;
-
     private State target;
 
     @Before("trans")
@@ -20,10 +18,10 @@ public class Transition extends Declaration {
             @Token("ID") String label,
             @Before(":")
             @Token("ID")
-            @References(value = State.class, field = "source") String sourceLabel,
+            @References(value = State.class, field = "source") String source,
             @Before("->")
             @Token("ID")
-            @References(value = State.class, field = "target") String targetLabel) {
+            @References(value = State.class, field = "target") String target) {
         this.label = label;
     }
 
@@ -41,6 +39,14 @@ public class Transition extends Declaration {
         return source;
     }
 
+    public void setSource(State source) {
+        this.source = source;
+    }
+
+    public void setTarget(State target) {
+        this.target = target;
+    }
+
     public State getTarget() {
         return target;
     }
@@ -48,5 +54,16 @@ public class Transition extends Declaration {
     @Override
     public String toString() {
         return String.format("trans %s:%s->%s;", label, source.getLabel(), target.getLabel());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transition)) return false;
+
+        Transition that = (Transition) o;
+
+        return getLabel().equals(that.getLabel()) && getSource().equals(that.getSource()) &&
+                getTarget().equals(that.getTarget());
     }
 }

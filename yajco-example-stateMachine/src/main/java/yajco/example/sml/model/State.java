@@ -1,13 +1,14 @@
 package yajco.example.sml.model;
 
-import java.util.HashSet;
-import java.util.Set;
 import yajco.annotation.After;
 import yajco.annotation.Before;
 import yajco.annotation.Token;
 import yajco.annotation.reference.Identifier;
 
-public class State extends Declaration {
+import java.util.HashSet;
+import java.util.Set;
+
+public class State {
     @Identifier
     private final String label;
 
@@ -45,5 +46,15 @@ public class State extends Declaration {
             incoming.append(" ");
         }
         return String.format("state %s [outgoingTrans: %s; incomingTrans: %s];", label,outgoing.toString(),incoming.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof State)) return false;
+
+        State that = (State) o;
+
+        return getLabel().equals(that.getLabel());
     }
 }

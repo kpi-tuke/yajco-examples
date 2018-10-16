@@ -4,8 +4,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import yajco.example.sml.model.State;
 import yajco.example.sml.model.StateMachine;
-import yajco.exemple.sml.parser.ParseException;
+import yajco.example.sml.model.Transition;
 import yajco.exemple.sml.parser.StateMachineParser;
 
 import java.io.ByteArrayOutputStream;
@@ -35,15 +36,10 @@ public class IntegrationTest {
 				"trans c : Running -> Unsafe;\n" +
 				"trans d : Unsafe -> Running;\n";
 
-		parseStateMachine(input);
-		Assert.assertEquals("state Ready [outgoingTrans: a ; incomingTrans: b ];\n" +
-						"state Running [outgoingTrans: c b ; incomingTrans: a d ];\n" +
-						"state Unsafe [outgoingTrans: d ; incomingTrans: c ];\n" +
-						"trans a:Ready->Running;\n" +
-						"trans b:Running->Ready;\n" +
-						"trans c:Running->Unsafe;\n" +
-						"trans d:Unsafe->Running;\n\n",
-				outContent.toString());
+		StateMachine parsedStateMachine = parseStateMachine(input);
+		StateMachine stateMachine = getSimpleStateMachine();
+
+		Assert.assertTrue(stateMachine.equals(parsedStateMachine));
 	}
 
 	@Test
@@ -51,33 +47,122 @@ public class IntegrationTest {
 		String input = "state Idle;\n" +
 				"state InsertingCoins;\n" +
 				"state UserChoose;\n" +
-				"state ReturningRemnant;\n" +
-				"state MakeCoffee;\n" +
+				"state MakingCoffee;\n" +
+				"state ServiceNeeded;\n" +
 				"\n" +
-				"trans a : Idle -> InsertingCoins;\n" +
-				"trans b : InsertingCoins -> UserChoose;\n" +
-				"trans c : UserChoose -> ReturningRemnant;\n" +
-				"trans d : ReturningRemnant -> MakeCoffee;\n" +
-				"trans e : MakeCoffee -> Idle;\n";
+				"trans coinsInsert : Idle -> InsertingCoins;\n" +
+				"trans coinsReturn : InsertingCoins -> Idle;\n" +
+				"trans rightAmountEntered : InsertingCoins -> UserChoose;\n" +
+				"trans buttonPush : UserChoose -> MakingCoffee;\n" +
+				"trans cupTaken : MakingCoffee -> Idle;\n" +
+				"trans error : MakingCoffee -> ServiceNeeded;\n" +
+				"trans resetButton : ServiceNeeded -> Idle;\n";
 
-		parseStateMachine(input);
-		Assert.assertEquals("state Idle [outgoingTrans: a ; incomingTrans: e ];\n" +
-						"state InsertingCoins [outgoingTrans: b ; incomingTrans: a ];\n" +
-						"state UserChoose [outgoingTrans: c ; incomingTrans: b ];\n" +
-						"state ReturningRemnant [outgoingTrans: d ; incomingTrans: c ];\n" +
-						"state MakeCoffee [outgoingTrans: e ; incomingTrans: d ];\n" +
-						"trans a:Idle->InsertingCoins;\n" +
-						"trans b:InsertingCoins->UserChoose;\n" +
-						"trans c:UserChoose->ReturningRemnant;\n" +
-						"trans d:ReturningRemnant->MakeCoffee;\n" +
-						"trans e:MakeCoffee->Idle;\n" +
-						"\n",
-				outContent.toString());
+		StateMachine parsedStateMachine = parseStateMachine(input);
+		StateMachine stateMachine = getComplexStateMachine();
+
+		Assert.assertTrue(stateMachine.equals(parsedStateMachine));
+
 	}
 
-	private void parseStateMachine(String input) throws Exception {
-		StateMachine machine = new StateMachineParser().parse(input);
+	private StateMachine getSimpleStateMachine() {
+		State ready = new State("Ready");
+		State running = new State("Running");
+		State unsafe = new State("Unsafe");
 
-		System.out.println(machine);
+		Transition a = new Transition("a", ready.getLabel(), running.getLabel());
+		a.setSource(ready);
+		a.setTarget(running);
+
+		Transition b = new Transition("b", running.getLabel(), ready.getLabel());
+		b.setSource(running);
+		b.setTarget(ready);
+
+		Transition c = new Transition("c", running.getLabel(), unsafe.getLabel());
+		c.setSource(running);
+		c.setTarget(unsafe);
+
+		Transition d = new Transition("d", unsafe.getLabel(), running.getLabel());
+		d.setSource(unsafe);
+		d.setTarget(running);
+
+		ready.getIncomingTransitions().add(b);
+		ready.getOutgoingTransitions().add(a);
+
+		running.getIncomingTransitions().add(a);
+		running.getIncomingTransitions().add(d);
+		running.getOutgoingTransitions().add(b);
+		running.getOutgoingTransitions().add(c);
+
+		unsafe.getIncomingTransitions().add(c);
+		unsafe.getOutgoingTransitions().add(d);
+
+		State[] states = new State[]{ready, running, unsafe};
+		Transition[] transitions = new Transition[]{a, b, c, d};
+		return new StateMachine(states, transitions);
+	}
+
+	private StateMachine getComplexStateMachine() {
+		State idle = new State("Idle");
+		State insertingCoins = new State("InsertingCoins");
+		State userChoose = new State("UserChoose");
+		State makingCoffee = new State("MakingCoffee");
+		State serviceNeeded = new State("ServiceNeeded");
+
+		Transition coinsInsert = new Transition("coinsInsert", idle.getLabel(), insertingCoins.getLabel());
+		coinsInsert.setSource(idle);
+		coinsInsert.setTarget(insertingCoins);
+
+		Transition coinsReturn = new Transition("coinsReturn", insertingCoins.getLabel(), idle.getLabel());
+		coinsReturn.setSource(insertingCoins);
+		coinsReturn.setTarget(idle);
+
+		Transition rightAmountEntered = new Transition("rightAmountEntered", insertingCoins.getLabel(), userChoose.getLabel());
+		rightAmountEntered.setSource(insertingCoins);
+		rightAmountEntered.setTarget(userChoose);
+
+		Transition buttonPush = new Transition("buttonPush", userChoose.getLabel(), makingCoffee.getLabel());
+		buttonPush.setSource(userChoose);
+		buttonPush.setTarget(makingCoffee);
+
+		Transition cupTaken = new Transition("cupTaken", makingCoffee.getLabel(), idle.getLabel());
+		cupTaken.setSource(makingCoffee);
+		cupTaken.setTarget(idle);
+
+		Transition error = new Transition("error", makingCoffee.getLabel(), serviceNeeded.getLabel());
+		error.setSource(makingCoffee);
+		error.setTarget(serviceNeeded);
+
+		Transition resetButton = new Transition("resetButton", serviceNeeded.getLabel(), idle.getLabel());
+		resetButton.setSource(serviceNeeded);
+		resetButton.setTarget(idle);
+
+		idle.getIncomingTransitions().add(coinsReturn);
+		idle.getIncomingTransitions().add(cupTaken);
+		idle.getIncomingTransitions().add(resetButton);
+		idle.getOutgoingTransitions().add(coinsInsert);
+
+		insertingCoins.getIncomingTransitions().add(coinsInsert);
+		insertingCoins.getOutgoingTransitions().add(coinsReturn);
+		insertingCoins.getOutgoingTransitions().add(rightAmountEntered);
+
+		userChoose.getIncomingTransitions().add(rightAmountEntered);
+		userChoose.getOutgoingTransitions().add(buttonPush);
+
+		makingCoffee.getIncomingTransitions().add(buttonPush);
+		makingCoffee.getOutgoingTransitions().add(cupTaken);
+		makingCoffee.getOutgoingTransitions().add(error);
+
+		serviceNeeded.getIncomingTransitions().add(error);
+		serviceNeeded.getOutgoingTransitions().add(resetButton);
+
+		State[] states = new State[]{idle, insertingCoins, userChoose, makingCoffee, serviceNeeded};
+		Transition[] transitions = new Transition[]{coinsInsert, coinsReturn, rightAmountEntered, buttonPush, cupTaken, error, resetButton};
+
+		return new StateMachine(states, transitions);
+	}
+
+	private StateMachine parseStateMachine(String input) throws Exception {
+		return new StateMachineParser().parse(input);
 	}
 }
