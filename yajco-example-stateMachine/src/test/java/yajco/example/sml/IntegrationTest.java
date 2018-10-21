@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import yajco.example.sml.model.Declaration;
 import yajco.example.sml.model.State;
 import yajco.example.sml.model.StateMachine;
 import yajco.example.sml.model.Transition;
@@ -70,21 +71,10 @@ public class IntegrationTest {
 		State running = new State("Running");
 		State unsafe = new State("Unsafe");
 
-		Transition a = new Transition("a", ready.getLabel(), running.getLabel());
-		a.setSource(ready);
-		a.setTarget(running);
-
-		Transition b = new Transition("b", running.getLabel(), ready.getLabel());
-		b.setSource(running);
-		b.setTarget(ready);
-
-		Transition c = new Transition("c", running.getLabel(), unsafe.getLabel());
-		c.setSource(running);
-		c.setTarget(unsafe);
-
-		Transition d = new Transition("d", unsafe.getLabel(), running.getLabel());
-		d.setSource(unsafe);
-		d.setTarget(running);
+		Transition a = new Transition("a", ready, running);
+		Transition b = new Transition("b", running, ready);
+		Transition c = new Transition("c", running, unsafe);
+		Transition d = new Transition("d", unsafe, running);
 
 		ready.getIncomingTransitions().add(b);
 		ready.getOutgoingTransitions().add(a);
@@ -97,9 +87,8 @@ public class IntegrationTest {
 		unsafe.getIncomingTransitions().add(c);
 		unsafe.getOutgoingTransitions().add(d);
 
-		State[] states = new State[]{ready, running, unsafe};
-		Transition[] transitions = new Transition[]{a, b, c, d};
-		return new StateMachine(states, transitions);
+		Declaration[] declarations = new Declaration[]{ready, running, unsafe, a, b, c, d};
+		return new StateMachine(declarations);
 	}
 
 	private StateMachine getComplexStateMachine() {
@@ -109,33 +98,13 @@ public class IntegrationTest {
 		State makingCoffee = new State("MakingCoffee");
 		State serviceNeeded = new State("ServiceNeeded");
 
-		Transition coinsInsert = new Transition("coinsInsert", idle.getLabel(), insertingCoins.getLabel());
-		coinsInsert.setSource(idle);
-		coinsInsert.setTarget(insertingCoins);
-
-		Transition coinsReturn = new Transition("coinsReturn", insertingCoins.getLabel(), idle.getLabel());
-		coinsReturn.setSource(insertingCoins);
-		coinsReturn.setTarget(idle);
-
-		Transition rightAmountEntered = new Transition("rightAmountEntered", insertingCoins.getLabel(), userChoose.getLabel());
-		rightAmountEntered.setSource(insertingCoins);
-		rightAmountEntered.setTarget(userChoose);
-
-		Transition buttonPush = new Transition("buttonPush", userChoose.getLabel(), makingCoffee.getLabel());
-		buttonPush.setSource(userChoose);
-		buttonPush.setTarget(makingCoffee);
-
-		Transition cupTaken = new Transition("cupTaken", makingCoffee.getLabel(), idle.getLabel());
-		cupTaken.setSource(makingCoffee);
-		cupTaken.setTarget(idle);
-
-		Transition error = new Transition("error", makingCoffee.getLabel(), serviceNeeded.getLabel());
-		error.setSource(makingCoffee);
-		error.setTarget(serviceNeeded);
-
-		Transition resetButton = new Transition("resetButton", serviceNeeded.getLabel(), idle.getLabel());
-		resetButton.setSource(serviceNeeded);
-		resetButton.setTarget(idle);
+		Transition coinsInsert = new Transition("coinsInsert", idle, insertingCoins);
+		Transition coinsReturn = new Transition("coinsReturn", insertingCoins, idle);
+		Transition rightAmountEntered = new Transition("rightAmountEntered", insertingCoins, userChoose);
+		Transition buttonPush = new Transition("buttonPush", userChoose, makingCoffee);
+		Transition cupTaken = new Transition("cupTaken", makingCoffee, idle);
+		Transition error = new Transition("error", makingCoffee, serviceNeeded);
+		Transition resetButton = new Transition("resetButton", serviceNeeded, idle);
 
 		idle.getIncomingTransitions().add(coinsReturn);
 		idle.getIncomingTransitions().add(cupTaken);
@@ -156,10 +125,22 @@ public class IntegrationTest {
 		serviceNeeded.getIncomingTransitions().add(error);
 		serviceNeeded.getOutgoingTransitions().add(resetButton);
 
-		State[] states = new State[]{idle, insertingCoins, userChoose, makingCoffee, serviceNeeded};
-		Transition[] transitions = new Transition[]{coinsInsert, coinsReturn, rightAmountEntered, buttonPush, cupTaken, error, resetButton};
+		Declaration[] declarations = new Declaration[]{
+				idle,
+				insertingCoins,
+				userChoose,
+				makingCoffee,
+				serviceNeeded,
+				coinsInsert,
+				coinsReturn,
+				rightAmountEntered,
+				buttonPush,
+				cupTaken,
+				error,
+				resetButton
+		};
 
-		return new StateMachine(states, transitions);
+		return new StateMachine(declarations);
 	}
 
 	private StateMachine parseStateMachine(String input) throws Exception {

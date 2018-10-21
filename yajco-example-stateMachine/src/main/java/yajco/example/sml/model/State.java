@@ -8,7 +8,7 @@ import yajco.annotation.reference.Identifier;
 import java.util.HashSet;
 import java.util.Set;
 
-public class State {
+public class State extends Declaration {
     @Identifier
     private final String label;
 

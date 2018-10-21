@@ -4,31 +4,21 @@ import java.util.Arrays;
 
 public class StateMachine {
 
-    private final State[] states;
-    private final Transition[] transitions;
+    private final Declaration[] declarations;
 
-    public StateMachine(State[] states, Transition[] transitions) {
-        this.states = states;
-        this.transitions = transitions;
+    public StateMachine(Declaration[] declarations) {
+        this.declarations = declarations;
     }
 
-    public State[] getStates() {
-        return states;
-    }
-
-    public Transition[] getTransitions() {
-        return transitions;
+    public Declaration[] getDeclarations() {
+        return declarations;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (State state : states) {
-            sb.append(state.toString());
-            sb.append('\n');
-        }
-        for (Transition transition : transitions) {
-            sb.append(transition.toString());
+        for (Declaration declaration : declarations) {
+            sb.append(declaration.toString());
             sb.append('\n');
         }
         return sb.toString();
@@ -40,6 +30,6 @@ public class StateMachine {
         if (!(o instanceof StateMachine)) return false;
 
         StateMachine that = (StateMachine) o;
-        return Arrays.equals(getStates(), that.getStates()) && Arrays.equals(getTransitions(), that.getTransitions());
+        return Arrays.equals(getDeclarations(), that.getDeclarations());
     }
 }

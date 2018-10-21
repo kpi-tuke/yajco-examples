@@ -3,10 +3,11 @@ package yajco.example.sml.model;
 import javax.annotation.PostConstruct;
 import yajco.annotation.After;
 import yajco.annotation.Before;
+import yajco.annotation.Exclude;
 import yajco.annotation.Token;
 import yajco.annotation.reference.References;
 
-public class Transition {
+public class Transition extends Declaration {
 
     private String label;
     private State source;
@@ -18,11 +19,18 @@ public class Transition {
             @Token("ID") String label,
             @Before(":")
             @Token("ID")
-            @References(value = State.class, field = "source") String source,
+            @References(value = State.class, field = "source") String sourceLabel,
             @Before("->")
             @Token("ID")
-            @References(value = State.class, field = "target") String target) {
+            @References(value = State.class, field = "target") String targetLabel) {
         this.label = label;
+    }
+
+    @Exclude
+    public Transition(String label, State source, State target) {
+        this.label = label;
+        this.source = source;
+        this.target = target;
     }
 
     @PostConstruct
@@ -37,14 +45,6 @@ public class Transition {
 
     public State getSource() {
         return source;
-    }
-
-    public void setSource(State source) {
-        this.source = source;
-    }
-
-    public void setTarget(State target) {
-        this.target = target;
     }
 
     public State getTarget() {
