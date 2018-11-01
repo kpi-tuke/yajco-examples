@@ -9,4 +9,4 @@ env:
   - TEST_DIR=yajco-example-robotKarel
   - TEST_DIR=yajco-example-simpleRobot
   - TEST_DIR=yajco-example-stateMachine
-script: cd $TEST_DIR && mvn verify && mvn clean
+script: cd $TEST_DIR && mvn verify
