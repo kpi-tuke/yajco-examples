@@ -1,0 +1,86 @@
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*   o *
+*  A  *
+*******
+Karel: posX=3, posY=3, direction=NORTH, beepers=0
+Executing: yajco.robot.karel.model.instruction.Move
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*  Ao *
+*  K  *
+*******
+Karel: posX=3, posY=2, direction=NORTH, beepers=0
+Executing: yajco.robot.karel.model.instruction.TurnLeft
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*  <o *
+*  K  *
+*******
+Karel: posX=3, posY=2, direction=WEST, beepers=0
+Executing: yajco.robot.karel.model.instruction.TurnLeft
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*  Vo *
+*  K  *
+*******
+Karel: posX=3, posY=2, direction=SOUTH, beepers=0
+Executing: yajco.robot.karel.model.instruction.TurnLeft
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*  >o *
+*  K  *
+*******
+Karel: posX=3, posY=2, direction=EAST, beepers=0
+Executing: yajco.robot.karel.model.instruction.Move
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*   > *
+*  K  *
+*******
+Karel: posX=4, posY=2, direction=EAST, beepers=0
+Executing: yajco.robot.karel.model.instruction.PickBeeper
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*   > *
+*  K  *
+*******
+Karel: posX=4, posY=2, direction=EAST, beepers=1
+Executing: yajco.robot.karel.model.instruction.TurnLeft
+
+----------------------------------------------------------------------------------
+*******
+*o   o*
+*   A *
+*  K  *
+*******
+Karel: posX=4, posY=2, direction=NORTH, beepers=1
+Executing: yajco.robot.karel.model.instruction.Move
+
+----------------------------------------------------------------------------------
+*******
+*o  Ao*
+*     *
+*  K  *
+*******
+Karel: posX=4, posY=1, direction=NORTH, beepers=1
+Executing: yajco.robot.karel.model.instruction.TurnOff
+
+*******
+*o  Ao*
+*     *
+*  K  *
+*******

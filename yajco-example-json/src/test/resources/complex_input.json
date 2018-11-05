@@ -1,0 +1,35 @@
+{
+  "id": 444,
+  "gender": "male",
+  "name": "John Bell",
+  "active": true,
+  "age": 34.5,
+  "hobbies": [
+    "skiing",
+    "sleeping"
+  ],
+  "children": [
+    {
+      "id": 445,
+      "gender": "male",
+      "name": "Peter Bell",
+      "active": true,
+      "age": 15,
+      "hobbies": [
+        "skiing",
+        "reading"
+      ]
+    },
+    {
+      "id": 446,
+      "gender": "female",
+      "name": "Anna Bell",
+      "active": false,
+      "age": 17,
+      "hobbies": [
+        "music",
+        "dancing"
+      ]
+    }
+  ]
+}

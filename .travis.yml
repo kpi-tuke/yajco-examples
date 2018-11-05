@@ -1,0 +1,12 @@
+language: java
+env:
+  - TEST_DIR=yajco-example-deskNielsen
+  - TEST_DIR=yajco-example-extMathExpressions
+  - TEST_DIR=yajco-example-gettingStarted
+  - TEST_DIR=yajco-example-imperativeLang
+  - TEST_DIR=yajco-example-json
+  - TEST_DIR=yajco-example-mathExpressions
+  - TEST_DIR=yajco-example-robotKarel
+  - TEST_DIR=yajco-example-simpleRobot
+  - TEST_DIR=yajco-example-stateMachine
+script: cd $TEST_DIR && mvn verify
