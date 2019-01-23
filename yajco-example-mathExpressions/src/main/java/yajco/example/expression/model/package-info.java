@@ -6,7 +6,6 @@
         @TokenDef(name = "MINUS", regexp = "[-]"),
         @TokenDef(name = "STAR", regexp = "[*]"),
         @TokenDef(name = "SLASH", regexp = "[/]"),
-        @TokenDef(name = "POW", regexp = "[^]"),
         @TokenDef(name = "VALUE", regexp = "([0-9]+)")
     },
     skips = {
