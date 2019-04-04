@@ -1,13 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>JAVA</ID>
-  <OriginalElement />
-  <nodes />
+  <OriginalElement>yajco.example.json.model</OriginalElement>
+  <nodes>
+    <node x="219.24999999999997" y="0.0">yajco.example.json.model.JsonValue</node>
+    <node x="417.0" y="101.0">yajco.example.json.model.JsonNull</node>
+    <node x="40.0" y="182.0">yajco.example.json.model.Member</node>
+    <node x="313.94318181818176" y="263.0">yajco.example.json.model.JsonObject</node>
+    <node x="540.0" y="101.0">yajco.example.json.model.JsonBoolean</node>
+    <node x="268.0" y="101.0">yajco.example.json.model.JsonNumber</node>
+    <node x="135.99999999999997" y="101.0">yajco.example.json.model.JsonArray</node>
+    <node x="0.0" y="101.0">yajco.example.json.model.JsonString</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="yajco.example.json.model.JsonNumber" target="yajco.example.json.model.JsonValue">
+      <point x="0.0" y="-15.5" />
+      <point x="332.5" y="81.0" />
+      <point x="283.375" y="81.0" />
+      <point x="7.125" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonNull" target="yajco.example.json.model.JsonValue">
+      <point x="0.0" y="-15.5" />
+      <point x="468.5" y="71.0" />
+      <point x="297.625" y="71.0" />
+      <point x="21.375" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonArray" target="yajco.example.json.model.JsonValue">
+      <point x="28.0" y="-15.5" />
+      <point x="219.99999999999997" y="81.0" />
+      <point x="269.125" y="81.0" />
+      <point x="-7.125" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.Member" target="yajco.example.json.model.JsonValue">
+      <point x="25.75" y="-15.5" />
+      <point x="117.25" y="157.0" />
+      <point x="125.49999999999997" y="157.0" />
+      <point x="125.49999999999997" y="61.0" />
+      <point x="240.62499999999997" y="61.0" />
+      <point x="-35.625" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonObject" target="yajco.example.json.model.JsonValue">
+      <point x="29.75" y="-15.5" />
+      <point x="403.19318181818176" y="238.0" />
+      <point x="680.5" y="238.0" />
+      <point x="680.5" y="51.0" />
+      <point x="326.125" y="51.0" />
+      <point x="49.875" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonObject" target="yajco.example.json.model.Member">
+      <point x="-29.75" y="-15.5" />
+      <point x="343.69318181818176" y="238.0" />
+      <point x="91.5" y="238.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.Member" target="yajco.example.json.model.JsonString">
+      <point x="-25.75" y="-15.5" />
+      <point x="65.75" y="157.0" />
+      <point x="57.5" y="157.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonString" target="yajco.example.json.model.JsonValue">
+      <point x="0.0" y="-15.5" />
+      <point x="57.5" y="51.0" />
+      <point x="226.37499999999997" y="51.0" />
+      <point x="-49.875" y="15.5" />
+    </edge>
+    <edge source="yajco.example.json.model.JsonBoolean" target="yajco.example.json.model.JsonValue">
+      <point x="0.0" y="-15.5" />
+      <point x="605.0" y="61.0" />
+      <point x="311.875" y="61.0" />
+      <point x="35.625" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="404.0" y="99.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
