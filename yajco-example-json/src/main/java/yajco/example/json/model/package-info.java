@@ -2,7 +2,7 @@
 mainNode = "JsonValue",
 tokens = {
     @TokenDef(name = "STRING", regexp = "\"([^\"]*)\""),
-    @TokenDef(name = "NUMBER", regexp = "([0-9]+(\\.[0-9]+)?([eE][+-][0-9]+)?)"),
+    @TokenDef(name = "NUMBER", regexp = "([-]?[0-9]+(\\.[0-9]+)?([eE][+-][0-9]+)?)"),
     @TokenDef(name = "BOOLEAN", regexp = "(true)|(false)"),
 },
 skips = {
