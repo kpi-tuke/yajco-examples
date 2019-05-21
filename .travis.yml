@@ -1,4 +1,5 @@
 language: java
+jdk: oraclejdk11
 env:
   - TEST_DIR=yajco-example-deskNielsen
   - TEST_DIR=yajco-example-extMathExpressions
