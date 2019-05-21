@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk8
+jdk: openjdk8
 env:
   - TEST_DIR=yajco-example-deskNielsen
   - TEST_DIR=yajco-example-extMathExpressions
