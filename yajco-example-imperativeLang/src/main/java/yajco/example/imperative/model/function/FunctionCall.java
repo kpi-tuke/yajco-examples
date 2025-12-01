@@ -15,7 +15,7 @@ public class FunctionCall implements Expression {
     private final Expression[] expressions;
 
     public FunctionCall(
-            @References(Function.class) String ident,
+            @References(Function.class) String identifier,
             @Before("LPAR") @After("RPAR")
             @Separator("COMMA") Expression[] expressions) {
         this.expressions = expressions;

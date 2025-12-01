@@ -16,7 +16,7 @@ public class PrefixIncrement extends UnaryOperation {
 
     @Override
     public long eval() {
-        String ident = ((Variable) getExpression()).getIdent();
+        String ident = ((Variable) getExpression()).getIdentifier();
         long value = Machine.getInstance().getValue(ident) + 1;
         Machine.getInstance().setValue(ident, value);
         return value;

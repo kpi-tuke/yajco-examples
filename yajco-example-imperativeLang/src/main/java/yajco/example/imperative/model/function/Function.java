@@ -15,11 +15,11 @@ public class Function {
     private final Block body;
 
     public Function(
-            String ident,
+            String identifier,
             @Before("LPAR") @After("RPAR")
             @Separator("COMMA") Parameter[] parameters,
             Block body) {                
-        this.name = ident;
+        this.name = identifier;
         this.parameters = parameters;
         this.body = body;
     }

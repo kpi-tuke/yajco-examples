@@ -34,22 +34,22 @@ public class Machine {
         variables = variableStack.peek();
     }
 
-    public long getValue(String ident) {
-        return variables.get(ident);
+    public long getValue(String identifier) {
+        return variables.get(identifier);
     }
 
-    public void setValue(String ident, long value) {
-        variables.put(ident, value);
+    public void setValue(String identifier, long value) {
+        variables.put(identifier, value);
     }
 
     public void write(long value) {
         System.out.println(value);
     }
 
-    public void read(String ident) {
+    public void read(String identifier) {
         try {
             String line = reader.readLine();
-            setValue(ident, Long.parseLong(line));
+            setValue(identifier, Long.parseLong(line));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

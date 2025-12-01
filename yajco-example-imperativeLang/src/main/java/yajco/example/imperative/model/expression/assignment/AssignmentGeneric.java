@@ -13,7 +13,7 @@ public abstract class AssignmentGeneric extends BinaryOperation {
     @Override
     public long eval() {
         long value = getExpression2().eval();
-        String ident = ((Variable) getExpression1()).getIdent();
+        String ident = ((Variable) getExpression1()).getIdentifier();
         value = eval(Machine.getInstance().getValue(ident), value);
         Machine.getInstance().setValue(ident, value);
         return value;

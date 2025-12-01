@@ -17,7 +17,7 @@ public class Assignment extends BinaryOperation {
     @Override
     public long eval() {
         long value = getExpression2().eval();
-        String ident = ((Variable) getExpression1()).getIdent();
+        String ident = ((Variable) getExpression1()).getIdentifier();
         Machine.getInstance().setValue(ident, value);
         return value;
     }

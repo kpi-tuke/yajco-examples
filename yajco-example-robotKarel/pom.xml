@@ -10,24 +10,21 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>8</maven.compiler.release>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
-    <yajco.version>0.5.9</yajco.version>
+    <maven.compiler.release>11</maven.compiler.release>
+    <yajco.version>0.6.0</yajco.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>sk.tuke.yajco</groupId>
-      <artifactId>yajco-beaver-parser-generator-module</artifactId>
+      <artifactId>yajco-annotations</artifactId>
       <version>${yajco.version}</version>
     </dependency>
     <dependency>
       <groupId>sk.tuke.yajco</groupId>
-      <artifactId>yajco-annotation-processor</artifactId>
+      <artifactId>yajco-beaver-parser-generator-module</artifactId>
       <version>${yajco.version}</version>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -42,19 +39,21 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>sk.tuke.yajco</groupId>
+              <artifactId>yajco-annotation-processor</artifactId>
+              <version>${yajco.version}</version>
+            </path>
+            <path>
+              <groupId>sk.tuke.yajco</groupId>
+              <artifactId>yajco-beaver-parser-generator-module</artifactId>
+              <version>${yajco.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>set-proc-full</id>
-      <activation>
-        <jdk>[9,)</jdk>
-      </activation>
-      <properties>
-        <maven.compiler.proc>full</maven.compiler.proc>
-      </properties>
-    </profile>
-  </profiles>
 </project>

@@ -49,7 +49,7 @@
         @TokenDef(name = "LBR", regexp = "\\{"),
         @TokenDef(name = "RBR", regexp = "\\}"),
         
-        @TokenDef(name = "IDENT", regexp = "[a-zA-Z]+"),
+        @TokenDef(name = "IDENTIFIER", regexp = "[a-zA-Z]+"),
         @TokenDef(name = "VALUE", regexp = "[0-9]+")
     },
     skips = {
