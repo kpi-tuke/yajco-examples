@@ -1,40 +1,42 @@
 # YAJCo Examples
 
-We want to provide you a few examples of languages created with [YAJCo](https://github.com/kpi-tuke/yajco/). You can download them and try them out.
+This repository provides several example languages created with [YAJCo](https://github.com/kpi-tuke/yajco/).  
+You can download them and try them out yourself.
 
+**Download all examples:**
+[https://github.com/kpi-tuke/yajco-examples/archive/master.zip](https://github.com/kpi-tuke/yajco-examples/archive/master.zip)
 
+You can use any Java IDE with Maven support. The examples have been tested with:
 
-**Download all examples: https://github.com/kpi-tuke/yajco-examples/archive/master.zip**
+* IntelliJ IDEA
+* NetBeans
+* Eclipse
 
-You can use any Java IDE with support for Maven. Examples have been tested in
-  * IntelliJ IDEA
-  * Netbeans
-  * Eclipse
-
-We recommend using **IntelliJ IDEA** as Netbeans has problems with generated sources and sometimes cannot provide them for error checking. Even when build and run is OK in Netbeans, project report fictious Netbeans errors. So you can use even Netbeans, but need to ignore errors. Eclipse is OK as long as you know how to run Maven builds in it.
-
-If you experience some problems running these examples, please do _clean and build_ first and than _run_. With some specific IntelliJ IDEA settings it is required to do _run_ two times in row and you need to use our provided _run_ main class configuration.
-
+We recommend using **IntelliJ IDEA**, as NetBeans has issues handling generated sources and may display false error
+messages even when the project builds and runs successfully. Eclipse works fine as long as you know how to run Maven
+builds within it.
 
 ---
 
+## Simple Robot Karel Language
 
-## Simple Robot Karel language ##
+Directory: `simple-robot`
 
-_Directory:_ `yajco-example-simpleRobot`
+A very simple example for controlling a robot. The robot supports two types of commands:
 
-Very simple example for manipulating robot. Robot takes 2 types of commands:
-  * Move
-  * Turn left
-Execution of each command is displayed with message to standard output.
+* Move
+* Turn left
 
-This language example serves as simple example of multiple language concepts with simple concrete syntax and semantics. It is possible to use abstract classes and interfaces as points of extensions as is uses class `Command`.
+The execution of each command is displayed as a message in the standard output.
 
-_**Model (class diagram):**_
+This example demonstrates several basic language concepts with a simple syntax and semantics.  
+It also shows how abstract classes and interfaces can serve as extension points, as seen in the `Command` class.
 
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-simpleRobot/simpleRobot-diagram.png)
 
 _**Sentence example:**_
+
 ```
 begin
  move
@@ -44,28 +46,29 @@ end
 ```
 
 _**Execution result:**_
+
 ```
 going straight
 turning left
 going straight
 ```
 
-
 ---
 
+## Robot Karel Language
 
-## Robot Karel language ##
+Directory: `robot-karel`
 
-_Directory:_ `yajco-example-robotKarel`
+A more complex example based on the Robot Karel language described
+at [http://mormegil.wz.cz/prog/karel/prog_doc.htm](http://mormegil.wz.cz/prog/karel/prog_doc.htm).
 
-Complex example containing Robot Karel language as explained in http://mormegil.wz.cz/prog/karel/prog_doc.htm
+The overview of all classes used for the language specification is shown in the following diagram.  
+As you can see, it’s quite a complex example. It even supports creating new named instruction definitions.
 
-Overview of all classes used for language specification is displayed in next image. As you can see it pretty complex example. It supports even creation of new named definitions of instructions.
+Execution results in the step-by-step evaluation of instructions within a given world.  
+Before each instruction is executed, the state of the world and the robot is displayed in the console.
 
-Result of execution is actual evaluation of instructions in provided world. Before each evaluation of instruction state of the world and robot is displayed in console.
-
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-robotKarel/robotKarel-diagram.png)
 
 _**Sentence example:**_
@@ -100,6 +103,7 @@ END-OF-PROGRAM
 ```
 
 _**Execution result:**_
+
 ```
 *******
 *o   o*
@@ -188,59 +192,63 @@ Executing: yajco.robot.karel.model.instruction.TurnOff
 *******
 ```
 
-
 ---
 
+## Math Expressions Language
 
-## Math Expression language ##
+Directory: `math-expressions`
 
-_Directory:_ `yajco-example-mathExpressions`
+A simple language for writing mathematical expressions consisting of:
 
-Language for writing simple mathematical expressions consisting of:
-  * addition
-  * reduction
-  * multiplication
-  * division (integer)
-  * parenthesis
+* addition
+* subtraction
+* multiplication
+* integer division
+* parentheses
 
-Result of each sentence of this language is evaluation of mathematical expression and it provides result. Such language could be used as module for any other language requiring support of mathematical expression.
+Each sentence is evaluated as a mathematical expression and produces a numeric result.  
+Such a language could be used as a module in other languages that require arithmetic expressions.
 
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-mathExpressions/mathExpression-diagram.png)
 
 _**Sentence example:**_
+
 ```
 (1+6/2)*30
 ```
 
 _**Execution result:**_
+
 ```
 Result for '(1+6/2)*30' is: 120
 ```
 
-
 ---
 
+## Extended Math Expressions Language
 
-## Extended Math Expression language ##
+Directory: `ext-math-expressions`
 
-_Directory:_ `yajco-example-extMathExpressions`
+An extended version of the previous mathematical expression language.  
+It adds more operations and demonstrates the automatically generated `Printer` feature included in YAJCo.
 
-Language similar to previous language of mathematical expressions. Contains more mathematical operations and provides example for automatically generated `Printer` included in YAJCo tool.
+The result of execution is the evaluated mathematical value.  
+Additionally, the parsed expression is printed using the auto-generated printer.  
+Because the language supports parentheses, the printer uses them extensively (though it could be made more
+sophisticated).
 
-Result of execution is evaluation of expression in form of mathematical value. As result we also print parsed sentence with automatically generated printer. Language supports parenthesis, therefore printer uses parenthesis in all possible places (of course, it would be nice to make printer more sophisticated :-))
-
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-extMathExpressions/extMathExpression-diagram.png)
 
 _**Sentence example:**_
+
 ```
 2 ^ 3 * -7
 ```
 
 _**Execution result:**_
+
 ```
 Result: -56
 
@@ -248,23 +256,23 @@ Printer output:
 ((( 2) \^( 3)) \*( -( 7)))
 ```
 
-
 ---
 
+## State Machine Language
 
-## State Machine language ##
+Directory: `state-machine`
 
-_Directory:_ `yajco-example-stateMachine`
+A simple language for describing state machines.  
+It allows you to define states and transitions between them.  
+This example demonstrates the use of _identifiers_ and _references_ through YAJCo’s specialized annotations.
 
-State machine is common in computer science. We have created language to describe state machines. It is possible to specify states and transitions between states. This example is a simple example for usage of _identifiers_ and _references_ in form of a language pattern, as YAJCo provides special annotations for this functionality.
+The execution result summarizes the described state machine, including incoming and outgoing transitions for each state.
 
-Result of execution of a language sentence is summary of described state machine with information about incoming and outcoming transitions for each state.
-
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-stateMachine/stateMachine-diagram.png)
 
 _**Sentence example:**_
+
 ```
 state Ready;
 state Running;
@@ -277,6 +285,7 @@ trans d : Unsafe -> Running;
 ```
 
 _**Execution result:**_
+
 ```
 state Ready [outgoingTrans: a ; incomingTrans: b ];
 state Running [outgoingTrans: b c ; incomingTrans: a d ];
@@ -287,27 +296,27 @@ trans c:Running->Unsafe;
 trans d:Unsafe->Running;
 ```
 
-
 ---
 
+## Nielsen’s DESK Language
 
-## Nielsen's DESK language ##
-_Directory:_ `yajco-example-deskNielsen`
+Directory: `desk-nielsen`
 
-Language for description of simple expressions with constants.
+A language for describing simple expressions with constants.
 
-Result of execution is transformation to instruction set and once again we display automatically generated printer output.
+Execution results in a transformation into an instruction set, followed by an automatically generated printer output.
 
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-deskNielsen/deskNielsen-diagram.png)
 
 _**Sentence example:**_
+
 ```
 print x + y + 3 + 2 where x = 1, y = 2
 ```
 
 _**Execution result:**_
+
 ```
 --------------------- PROGRAM RESULT ---------------------
 PUSH 2
@@ -322,21 +331,19 @@ ADD
 print(((( x) +( y)) +( 3)) +( 2)) where x = 1, y = 2
 ```
 
-
 ---
 
+## JSON Language
 
-## JSON language ##
+Directory: `json`
 
-_Directory:_ `yajco-example-json`
+A parser for the JSON format, created by one of our bachelor students as part of a YAJCo usage study.
 
-Parser for JSON format. Created by one of our bachelor student as part of YAJCo usage study.
-
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-json/json-diagram.png)
 
 _**Sentence example:**_
+
 ```
 {
 "id": 444,
@@ -348,25 +355,27 @@ _**Sentence example:**_
 }
 ```
 
-_**Result**_ is internal model of parsed JSON.
+**Result:** an internal model representing the parsed JSON structure.
 
 
 ---
 
+## Imperative Language
 
-## Imperative programming language ##
+Directory: `imperative-lang`
 
-_Directory:_ `yajco-example-imperativeLang`
+A generic imperative programming language with support for named functions, blocks, loops, and variables.  
+This example demonstrates the wide range of possibilities offered by YAJCo.  
+It is more complex but showcases most of YAJCo’s capabilities.
 
-Generic imperative programming language with support for named functions, blocks, iterations, variables. This language proves wide possibilities of YAJCo tool. It can be complex for understanding, but presents almost all functions possible in YAJCo.
+The result of execution depends on the input, as you can evaluate mathematical or logical expressions,
+print strings, or call functions.
 
-Result of execution can be almost anything written in sentence. It is possible to evaluate mathematical or logical expression, write strings, call functions.
-
-_**Model (class diagram):**_
-
+_**Model (class diagram):**_  
 ![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-imperativeLang/imperLang-diagram.png)
 
 _**Sentence example:**_
+
 ```
 abs(x) {
   return x < 0 ? - x : x;
@@ -382,6 +391,7 @@ abs(x) {
 ```
 
 _**Execution result:**_
+
 ```
 10
 9
