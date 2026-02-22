@@ -1,9 +1,6 @@
 package yajco.example.desk;
 
-import java.io.PrintWriter;
-
 import yajco.example.desk.model.Program;
-import yajco.example.desk.model.printer.Printer;
 import yajco.example.desk.parser.DeskParser;
 
 public class Main {
@@ -16,8 +13,8 @@ public class Main {
         System.out.println("--------------------- PROGRAM RESULT ---------------------");
         System.out.println(program.code());
 
-        System.out.println("--------------------- PRINTER OUTPUT ---------------------");
-        new Printer().print(program, new PrintWriter(System.out, true));
+        System.out.println("---------------------- AST OUTPUT ------------------------");
+        System.out.println(program);
 
         System.out.println();
     }

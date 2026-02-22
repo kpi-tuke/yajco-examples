@@ -12,7 +12,10 @@
         @Skip("[\\r]")
     },
     options = {
-        @Option(name = "yajco.generateTools", value = "all")
+        @Option(name = "yajco.generateTools", value = "ir"),
+        @Option(name = "yajco.ir.file", value = "desk.ir.json"),
+        @Option(name = "yajco.ir.languageName", value = "desk"),
+        @Option(name = "yajco.ir.fileExtensions", value = ".desk")
     }
 )
 package yajco.example.desk.model;

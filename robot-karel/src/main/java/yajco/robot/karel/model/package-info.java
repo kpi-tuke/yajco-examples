@@ -12,10 +12,17 @@
         @Skip("\\t"),
         @Skip("\\n"),
         @Skip("\\r")
+    },
+    options = {
+        @Option(name = "yajco.generateTools", value = "ir"),
+        @Option(name = "yajco.ir.file", value = "karel.ir.json"),
+        @Option(name = "yajco.ir.languageName", value = "karel"),
+        @Option(name = "yajco.ir.fileExtensions", value = ".kar")
     }
 )
 package yajco.robot.karel.model;
 
+import yajco.annotation.config.Option;
 import yajco.annotation.config.Parser;
 import yajco.annotation.config.TokenDef;
 import yajco.annotation.config.Skip;

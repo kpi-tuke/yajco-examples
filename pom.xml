@@ -39,6 +39,11 @@
       <version>${yajco.version}</version>
     </dependency>
     <dependency>
+      <groupId>sk.tuke.yajco</groupId>
+      <artifactId>yajco-ir-generator-module</artifactId>
+      <version>${yajco.version}</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit4.version}</version>
@@ -63,6 +68,11 @@
               <path>
                 <groupId>sk.tuke.yajco</groupId>
                 <artifactId>yajco-beaver-parser-generator-module</artifactId>
+                <version>${yajco.version}</version>
+              </path>
+              <path>
+                <groupId>sk.tuke.yajco</groupId>
+                <artifactId>yajco-ir-generator-module</artifactId>
                 <version>${yajco.version}</version>
               </path>
             </annotationProcessorPaths>

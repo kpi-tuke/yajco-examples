@@ -25,7 +25,12 @@
         @Skip("\\n"),
         @Skip("\\r")
     },
-    options = {@Option(name = "yajco.generateTools", value = "all")}
+    options = {
+        @Option(name = "yajco.generateTools", value = "ir"),
+        @Option(name = "yajco.ir.file", value = "ext-math-expressions.ir.json"),
+        @Option(name = "yajco.ir.languageName", value = "ext-math-expressions"),
+        @Option(name = "yajco.ir.fileExtensions", value = ".txt")
+    }
 )
 package yajco.example.extMathExpr.model;
 

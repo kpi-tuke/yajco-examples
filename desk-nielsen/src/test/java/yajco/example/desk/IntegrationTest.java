@@ -5,12 +5,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import yajco.example.desk.model.Program;
-import yajco.example.desk.model.printer.Printer;
 import yajco.example.desk.parser.DeskParser;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 
 public class IntegrationTest {
 
@@ -40,13 +38,6 @@ public class IntegrationTest {
     }
 
     @Test
-    public void simpleExamplePrinterOutputTest() throws Exception {
-        String input = "print x + y + 3 + 2 where x = 1, y = 2";
-        getPrinterOutput(input);
-        Assert.assertEquals("print(((( x) +( y)) +( 3)) +( 2)) where x = 1, y = 2\n", outContent.toString());
-    }
-
-    @Test
     public void complexExampleCodeTest() throws Exception {
         String input = "print x + 15 + y + 25 + z where x = 18, y = 32, z = 34";
         Assert.assertEquals("PUSH 34\n" +
@@ -61,21 +52,9 @@ public class IntegrationTest {
             getProgramCode(input));
     }
 
-    @Test
-    public void complexExamplePrinterOutputTest() throws Exception {
-        String input = "print x + 15 + y + 25 + z where x = 18, y = 32, z = 34";
-        getPrinterOutput(input);
-        Assert.assertEquals("print((((( x) +( 15)) +( y)) +( 25)) +( z)) where x = 18, y = 32, z = 34\n", outContent.toString());
-    }
-
     private String getProgramCode(String input) throws Exception {
         Program program = new DeskParser().parse(input);
         return program.code();
     }
 
-    private void getPrinterOutput(String input) throws Exception {
-        Program program = new DeskParser().parse(input);
-        Printer printer = new Printer();
-        printer.print(program, new PrintWriter(System.out));
-    }
 }

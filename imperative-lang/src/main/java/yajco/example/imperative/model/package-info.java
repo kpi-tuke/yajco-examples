@@ -57,10 +57,17 @@
         @Skip("\\t"),
         @Skip("\\n"),
         @Skip("\\r")
+    },
+    options = {
+        @Option(name = "yajco.generateTools", value = "ir"),
+        @Option(name = "yajco.ir.file", value = "imperative.ir.json"),
+        @Option(name = "yajco.ir.languageName", value = "imperative"),
+        @Option(name = "yajco.ir.fileExtensions", value = ".imp")
     }
 )
 package yajco.example.imperative.model;
 
+import yajco.annotation.config.Option;
 import yajco.annotation.config.Parser;
 import yajco.annotation.config.Skip;
 import yajco.annotation.config.TokenDef;
