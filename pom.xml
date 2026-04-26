@@ -14,6 +14,14 @@
   <description>Collection of example languages built with YAJCo</description>
   <url>https://github.com/kpi-tuke/yajco-examples</url>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/license/mit</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>

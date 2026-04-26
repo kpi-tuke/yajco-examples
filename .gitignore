@@ -4,5 +4,11 @@ target/
 *.log.?
 
 # IntelliJ IDEA
-.idea/*
+.idea/
 *.iml
+
+# Eclipse
+.classpath
+.project
+.factorypath
+.settings/

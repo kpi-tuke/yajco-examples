@@ -8,8 +8,8 @@ import yajco.example.extMathExpr.parser.ExpressionParser;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        InputStream in = Main.class.getResourceAsStream("/input.txt");
-        if (in == null) throw new RuntimeException("input.txt not found");
+        InputStream in = Main.class.getResourceAsStream("/input.expr");
+        if (in == null) throw new RuntimeException("input.expr not found");
 
         Expression expression = new ExpressionParser().parse(new InputStreamReader(in));
 

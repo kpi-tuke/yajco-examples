@@ -1,3 +1,10 @@
+@Language(
+    name = "ext-math-expressions",
+    description = "An extended mathematical expression language with unary, ternary, and power operators",
+    version = "1.0.0",
+    fileExtensions = {".expr"},
+    lineComment = "//"
+)
 @Parser(
     className = "yajco.example.extMathExpr.parser.ExpressionParser",
     mainNode = "Expression",
@@ -24,17 +31,11 @@
         @Skip("\\t"),
         @Skip("\\n"),
         @Skip("\\r")
-    },
-    options = {
-        @Option(name = "yajco.generateTools", value = "ir"),
-        @Option(name = "yajco.ir.file", value = "ext-math-expressions.ir.json"),
-        @Option(name = "yajco.ir.languageName", value = "ext-math-expressions"),
-        @Option(name = "yajco.ir.fileExtensions", value = ".txt")
     }
 )
 package yajco.example.extMathExpr.model;
 
-import yajco.annotation.config.Option;
+import yajco.annotation.config.Language;
 import yajco.annotation.config.Parser;
 import yajco.annotation.config.TokenDef;
 import yajco.annotation.config.Skip;

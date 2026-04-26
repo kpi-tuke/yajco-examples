@@ -33,7 +33,7 @@ This example demonstrates several basic language concepts with a simple syntax a
 It also shows how abstract classes and interfaces can serve as extension points, as seen in the `Command` class.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-simpleRobot/simpleRobot-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/simple-robot/simple-robot-diagram.png)
 
 _**Sentence example:**_
 
@@ -69,7 +69,7 @@ Execution results in the step-by-step evaluation of instructions within a given 
 Before each instruction is executed, the state of the world and the robot is displayed in the console.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-robotKarel/robotKarel-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/robot-karel/robot-karel-diagram.png)
 
 _**Sentence example:**_
 
@@ -210,7 +210,7 @@ Each sentence is evaluated as a mathematical expression and produces a numeric r
 Such a language could be used as a module in other languages that require arithmetic expressions.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-mathExpressions/mathExpression-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/math-expressions/math-expressions-diagram.png)
 
 _**Sentence example:**_
 
@@ -239,7 +239,7 @@ Because the language supports parentheses, the printer uses them extensively (th
 sophisticated).
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-extMathExpressions/extMathExpression-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/ext-math-expressions/ext-math-expressions-diagram.png)
 
 _**Sentence example:**_
 
@@ -269,7 +269,7 @@ This example demonstrates the use of _identifiers_ and _references_ through YAJC
 The execution result summarizes the described state machine, including incoming and outgoing transitions for each state.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-stateMachine/stateMachine-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/state-machine/state-machine-diagram.png)
 
 _**Sentence example:**_
 
@@ -307,7 +307,7 @@ A language for describing simple expressions with constants.
 Execution results in a transformation into an instruction set, followed by an automatically generated printer output.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-deskNielsen/deskNielsen-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/desk-nielsen/desk-nielsen-diagram.png)
 
 _**Sentence example:**_
 
@@ -340,7 +340,7 @@ Directory: `json`
 A parser for the JSON format, created by one of our bachelor students as part of a YAJCo usage study.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-json/json-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/json/json-diagram.png)
 
 _**Sentence example:**_
 
@@ -372,7 +372,7 @@ The result of execution depends on the input, as you can evaluate mathematical o
 print strings, or call functions.
 
 _**Model (class diagram):**_  
-![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/yajco-example-imperativeLang/imperLang-diagram.png)
+![UML class diagram](https://raw.githubusercontent.com/kpi-tuke/yajco-examples/master/imperative-lang/imperative-lang-diagram.png)
 
 _**Sentence example:**_
 

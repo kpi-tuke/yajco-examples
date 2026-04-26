@@ -1,3 +1,10 @@
+@Language(
+    name = "imperative",
+    description = "A simple imperative programming language with functions, loops, and conditionals",
+    version = "1.0.0",
+    fileExtensions = {".imp"},
+    lineComment = "//"
+)
 @Parser(
     className = "yajco.example.imperative.parser.Parser",
     mainNode = "yajco.example.imperative.model.Program",
@@ -29,7 +36,7 @@
         @TokenDef(name = "GT", regexp = ">"),
 
         @TokenDef(name = "AND", regexp = "&&"),
-        @TokenDef(name = "OR", regexp = "||"),
+        @TokenDef(name = "OR", regexp = "\\|\\|"),
         @TokenDef(name = "EXCL", regexp = "!"),
         @TokenDef(name = "QUESTION", regexp = "\\?"),
 
@@ -57,18 +64,11 @@
         @Skip("\\t"),
         @Skip("\\n"),
         @Skip("\\r")
-    },
-    options = {
-        @Option(name = "yajco.generateTools", value = "ir"),
-        @Option(name = "yajco.ir.file", value = "imperative.ir.json"),
-        @Option(name = "yajco.ir.languageName", value = "imperative"),
-        @Option(name = "yajco.ir.fileExtensions", value = ".imp")
     }
 )
 package yajco.example.imperative.model;
 
-import yajco.annotation.config.Option;
+import yajco.annotation.config.Language;
 import yajco.annotation.config.Parser;
 import yajco.annotation.config.Skip;
 import yajco.annotation.config.TokenDef;
-

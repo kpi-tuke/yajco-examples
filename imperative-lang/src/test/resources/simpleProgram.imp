@@ -1,0 +1,11 @@
+abs(x) {
+  return x < 0 ? - x : x;
+}
+
+{
+  i = -10;
+  while ( i <= 10 ) {
+    write abs(i);
+    i = i + 1;
+  }
+}

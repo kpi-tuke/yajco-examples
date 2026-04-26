@@ -25,7 +25,7 @@ public class IntegrationTest {
 
     @Test
     public void simpleExampleTest() throws Exception {
-        executeProgram("/simpleProgram");
+        executeProgram("/simpleProgram.imp");
         Assert.assertEquals("10\n" +
                 "9\n" +
                 "8\n" +
@@ -53,7 +53,7 @@ public class IntegrationTest {
 
     @Test
     public void complexExampleTest() throws Exception {
-        executeProgram("/complexProgram");
+        executeProgram("/complexProgram.imp");
         Assert.assertEquals("17\n" +
                 "18\n" +
                 "19\n" +
