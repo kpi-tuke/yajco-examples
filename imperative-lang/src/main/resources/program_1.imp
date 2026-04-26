@@ -1,0 +1,29 @@
+abs(x) {
+    return (x < 0) ? -x : x;
+}
+
+print(a) {
+    i = 10;
+    while(i < 20)
+        write ++i + 6;
+    return 0;
+}
+
+{
+    abs(-3);
+    print(2 + 4);
+    {
+        a = 3 * 4 + 7;
+        b = 2 + a;
+    }
+    if(b == 21)
+        c = 10;
+    while(b != 0) {
+        b = b - 1;
+        a = a * 2;
+    }
+    c = 1;
+    do
+        c = c + 1;
+    while (c < 20);
+}

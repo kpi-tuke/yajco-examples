@@ -1,23 +1,104 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>sk.tuke.yajco.example</groupId>
+  <groupId>sk.tuke.yajco.examples</groupId>
   <artifactId>examples</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>pom</packaging>
 
-  <name>All YAJCo examples</name>
+  <name>YAJCo Examples</name>
+  <description>Collection of example languages built with YAJCo</description>
+  <url>https://github.com/kpi-tuke/yajco-examples</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/license/mit</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+    <yajco.version>0.6.0</yajco.version>
+    <junit4.version>4.13.1</junit4.version>
+    <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>sk.tuke.yajco</groupId>
+      <artifactId>yajco-annotations</artifactId>
+      <version>${yajco.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>sk.tuke.yajco</groupId>
+      <artifactId>yajco-beaver-parser-generator-module</artifactId>
+      <version>${yajco.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>sk.tuke.yajco</groupId>
+      <artifactId>yajco-tools-module</artifactId>
+      <version>${yajco.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>sk.tuke.yajco</groupId>
+      <artifactId>yajco-ir-generator-module</artifactId>
+      <version>${yajco.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit4.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>sk.tuke.yajco</groupId>
+                <artifactId>yajco-annotation-processor</artifactId>
+                <version>${yajco.version}</version>
+              </path>
+              <path>
+                <groupId>sk.tuke.yajco</groupId>
+                <artifactId>yajco-beaver-parser-generator-module</artifactId>
+                <version>${yajco.version}</version>
+              </path>
+              <path>
+                <groupId>sk.tuke.yajco</groupId>
+                <artifactId>yajco-ir-generator-module</artifactId>
+                <version>${yajco.version}</version>
+              </path>
+            </annotationProcessorPaths>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <modules>
-    <module>yajco-example-gettingStarted</module>
-    <module>yajco-example-simpleRobot</module>
-    <module>yajco-example-robotKarel</module>
-    <module>yajco-example-mathExpressions</module>
-    <module>yajco-example-extMathExpressions</module>
-    <module>yajco-example-stateMachine</module>
-    <module>yajco-example-deskNielsen</module>
-    <module>yajco-example-json</module>
-    <module>yajco-example-imperativeLang</module>
+    <module>getting-started</module>
+    <module>simple-robot</module>
+    <module>robot-karel</module>
+    <module>math-expressions</module>
+    <module>ext-math-expressions</module>
+    <module>state-machine</module>
+    <module>desk-nielsen</module>
+    <module>json</module>
+    <module>imperative-lang</module>
   </modules>
 </project>
