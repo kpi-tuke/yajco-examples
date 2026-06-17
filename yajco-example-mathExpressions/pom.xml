@@ -23,7 +23,7 @@
     </dependency>
     <dependency>
       <groupId>sk.tuke.yajco</groupId>
-      <artifactId>yajco-javacc-parser-generator-module</artifactId>
+      <artifactId>yajco-beaver-parser-generator-module</artifactId>
       <version>${yajco.version}</version>
     </dependency>
     <dependency>
